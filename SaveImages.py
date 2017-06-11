@@ -1,5 +1,7 @@
 #! /Users/mikeyb/Applications/python3
 
+
+
 import requests, os, bs4, sys, shutil
 from apiclient import discovery
 import httplib2
@@ -7,7 +9,13 @@ from selenium import webdriver
 
 DOWNLOAD_FOLDER = '/Users/mikeyb/Downloads/galesburg/'
 
-urlFile = open('/Users/mikeyb/Desktop/GalesburgRunPhotoLinks3.txt','r')
+if len(sys.argv) > 1:
+	urlFileInput = sys.argv[1]
+else:
+	print ('Provide file with URLs to process as argument')
+	quit()
+	
+urlFile = open(urlFileInput,'r')
 urls = urlFile.readlines()
 imageUrls = []
 browser = webdriver.Firefox()
